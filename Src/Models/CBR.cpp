@@ -83,7 +83,7 @@ CBR::CBR(GraphicsResources* gr, const PGE::String& filename) {
             textures.push_back(tex);
             allTextures.push_back(tex);
             bool normalMapped = false;
-            PGE::Texture* texNormal = gr->getTexture(texturePath.cstr() + textureNames[i] + "_n");
+            PGE::Texture* texNormal = gr->getTexture(texturePath + textureNames[i] + "_n");
             if (texNormal != nullptr) {
                 normalMapped = true;
                 textures.push_back(texNormal);
@@ -149,7 +149,6 @@ CBR::CBR(GraphicsResources* gr, const PGE::String& filename) {
 
 
 
-    //delete[] indices;
     delete[] vertices;
     delete[] primitives;
     delete[] textureNames;

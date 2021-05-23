@@ -116,7 +116,7 @@ class Reflection {
         void setConstructorArgument(int index, bool val) {
             allocArguments(index);
             arguments[index].type = Type::Bool;
-            arguments[index].value.truthy = val;
+            arguments[index].value.bool8 = val;
         }
 
         void setConstructorArgument(int index, int val) {
@@ -183,7 +183,7 @@ class Reflection {
                         constructors[j]->prepare();
                         for (int k=0;k<arguments.size();k++) {
                             if (arguments[k].type == Type::Bool) {
-                                constructors[j]->setArgument(signature.arguments[k].name, arguments[k].value.truthy);
+                                constructors[j]->setArgument(signature.arguments[k].name, arguments[k].value.bool8);
                             } else if (arguments[k].type == Type::Int32) {
                                 constructors[j]->setArgument(signature.arguments[k].name, arguments[k].value.i32);
                             } else if (arguments[k].type == Type::UInt32) {

@@ -70,12 +70,8 @@ external string rootDirCBR_Objects;
 
 
 namespace Environment {
-	float fpsFactor; // todo
 	float interp; // todo
 }
-
-namespace Util { external float fpsFactor(float interp); }
-
 
 // #### SECTION 1. Import ----
 

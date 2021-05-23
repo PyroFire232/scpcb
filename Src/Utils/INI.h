@@ -28,7 +28,6 @@ class INIFile {
         INIFile(const PGE::FilePath& filename);
         ~INIFile();
 
-        INIFile* iniFileFactory(const PGE::FilePath& filename);
         void close(void* ptr);
         void save();
 

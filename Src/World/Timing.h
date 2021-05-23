@@ -8,14 +8,14 @@ class Timing {
         std::chrono::high_resolution_clock::time_point initialTime;
         std::chrono::high_resolution_clock::time_point prevTime;
 
-        // Tick timers (Milliseconds)
-        int tickRate;
-        int tickStep;
-        float sinceLastTick;
-        float avgTickRate;
-        std::chrono::high_resolution_clock::duration tickStepDuration;
-        std::chrono::high_resolution_clock::time_point compareTick;
-        std::chrono::high_resolution_clock::time_point lastTick;
+        // Tick rate
+        int tickRate; // Tick Rate - goal n Ticks Per Second (TPS), averages between n and n+1.
+        int tickStep; // Time between ticks (in nanoseconds)
+        float sinceLastTick; // True time since the last tick (in fractions of a second)
+        float avgTickRate; // Estimated true tickrate (in TPS)
+        std::chrono::high_resolution_clock::duration tickStepDuration; // The time between ticks (in high resolution nanoseconds)
+        std::chrono::high_resolution_clock::time_point compareTick; // the high-precision moment when the next tick should execute
+        std::chrono::high_resolution_clock::time_point lastTick; // the high-precision moment when the previous tick executed.
 
         // Frame timers (Milliseconds)
         int frameRate;

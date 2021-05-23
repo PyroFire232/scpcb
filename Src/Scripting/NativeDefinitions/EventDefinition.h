@@ -34,6 +34,7 @@ class EventDefinition : public NativeDefinition {
         void setArgument(const PGE::String& argument, uint32_t u32);
         void setArgument(const PGE::String& argument, float f);
         void setArgument(const PGE::String& argument, double d);
+        void setArgument(const PGE::String& argument, bool bool8);
         // TODO
         /*void setArgument(const PGE::String& argument, const PGE::String& s);
         void setArgument(const PGE::String& argument, ScriptObject* srcObj);

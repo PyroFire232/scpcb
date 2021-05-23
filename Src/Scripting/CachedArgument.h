@@ -15,7 +15,7 @@ struct CachedArgument {
         float f;
         double d;
         void* ptr;
-        bool truthy;
+        bool bool8;
     } value;
     PGE::String strValue;
     CachedArgument() = default;

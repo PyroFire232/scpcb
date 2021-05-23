@@ -99,6 +99,7 @@ Model::~Model() {
         delete materials[i];
     }
     delete[] materials;
+    delete[] originMaterials;
 
     gfxRes->dropShader(shader);
 }

@@ -56,9 +56,6 @@ namespace Util {
 namespace Math {
 	shared float pi2f=Math::PI*2.f;
 }
-namespace Util {
-	shared float fpsFactor(float interp) { return Math::maxFloat(Math::minFloat(interp*70.f,5.f),0.2f); } // Original math
-}
 
 // # Util::Vector2f::rotate(vec,ang/Math::PI); ----
 namespace Util { namespace Vector2f {

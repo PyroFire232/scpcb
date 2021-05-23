@@ -64,6 +64,15 @@ void EventDefinition::setArgument(const PGE::String& argument, double d) {
     }
 }
 
+void EventDefinition::setArgument(const PGE::String& argument, bool bool8) {
+    for (int i = 0; i < arguments.size(); i++) {
+        if (arguments[i].name.equals(argument)) {
+            arguments[i].type = Type::Bool;
+            arguments[i].value.bool8 = bool8;
+        }
+    }
+}
+
 void EventDefinition::execute() {
     for (int i = 0; i < registeredCallbacks.size(); i++) {
         registeredCallbacks[i]->prepare();
@@ -79,6 +88,8 @@ void EventDefinition::execute() {
                 registeredCallbacks[i]->setArgument(signature.arguments[j].name, arguments[j].value.f);
             } else if(arguments[j].type == Type::Double) {
                 registeredCallbacks[i]->setArgument(signature.arguments[j].name, arguments[j].value.d);
+            } else if (arguments[j].type == Type::Bool) {
+                registeredCallbacks[i]->setArgument(signature.arguments[j].name, arguments[j].value.bool8);
             }
         }
 

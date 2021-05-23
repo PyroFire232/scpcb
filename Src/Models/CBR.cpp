@@ -20,11 +20,6 @@ enum Lightmapped {
     Outdated = 2,
 };
 
-inline bool fileExists(PGE::String filename) {
-    struct stat buffer;
-    return (stat(filename.cstr(), &buffer) == 0);
-}
-
 CBR::CBR(GraphicsResources* gr, const PGE::String& filename) {
     this->gr = gr;
 
@@ -70,16 +65,16 @@ CBR::CBR(GraphicsResources* gr, const PGE::String& filename) {
 
             PGE::String texPath = texturePath + textureNames[i];
             PGE::FilePath truePath = PGE::FilePath::fromStr(texPath);
-            if (!fileExists(truePath.str() + ".jpg") && !fileExists(truePath.str() + ".png")) {
+            if (!PGE::FilePath(truePath + ".jpg").exists() && !PGE::FilePath(truePath + ".png").exists()) {
                 PGE::String filenameFolder = filename.substr(filename.begin(), filename.findLast("/"));
                 texPath = filenameFolder + "/" + textureNames[i];
                 truePath = PGE::FilePath::fromStr(texPath);
                 //printf("Trying path: %s --- ", truePath.cstr());
-                if (!fileExists(truePath.str() + ".jpg") && !fileExists(truePath.str() + ".png")) {
+                if (!PGE::FilePath(truePath + ".jpg").exists() && !PGE::FilePath(truePath + ".png").exists()) {
                     texPath = filenameFolder + filename.substr(filename.findLast("/"), filename.findLast(".")) + "/" + textureNames[i];
                     truePath = PGE::FilePath::fromStr(texPath);
                     //printf("Trying path: %s --- ", truePath.cstr());
-                    bool validTexture = (fileExists(truePath.str() + ".jpg") || fileExists(truePath.str() + ".png"));
+                    bool validTexture = (!PGE::FilePath(truePath + ".jpg").exists() && !PGE::FilePath(truePath + ".png").exists());
                     PGE_ASSERT(validTexture, "Tried to load CBR with missing texture: " + textureNames[i]);
                 }
             }

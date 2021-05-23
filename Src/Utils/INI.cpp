@@ -60,10 +60,6 @@ void INIFile::close(void* ptr) {
     delete iniF;
 }
 
-INIFile* INIFile::iniFileFactory(const PGE::FilePath& filename) {
-    INIFile* newINI = new INIFile(filename);
-    return newINI;
-}
 
 PGE::String INIFile::getValue(const PGE::String& section, const PGE::String& key, const PGE::String& defaultValue) {
     for (int i = 0; i < (int)sections.size(); i++) {

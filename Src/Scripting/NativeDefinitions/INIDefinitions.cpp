@@ -24,5 +24,10 @@ INIDefinitions::INIDefinitions(ScriptManager* mgr, INIFile* ini) {
 
 
     engine->SetDefaultNamespace("INIFile");
-    engine->RegisterGlobalFunction("INIFile@ open(string fileName)", asMETHOD(INIFile,iniFileFactory), asCALL_THISCALL_ASGLOBAL, ini);
+    engine->RegisterGlobalFunction("INIFile@ open(string fileName)", asMETHOD(INIDefinitions,iniFileFactory), asCALL_THISCALL_ASGLOBAL, this);
+}
+
+INIFile* INIDefinitions::iniFileFactory(const PGE::FilePath& filename) {
+    INIFile* newINI = new INIFile(filename);
+    return newINI;
 }

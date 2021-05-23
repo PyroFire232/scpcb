@@ -15,7 +15,7 @@ class Camera {
 
         float yawAngle;
         float pitchAngle;
-        // The range of the the pitchAngle field before it is clamped. - Gimbal lock workaround
+        // The range of the the pitchAngle field before it is clamped.
         float pitchAngleLimit;
         float tilt;
 

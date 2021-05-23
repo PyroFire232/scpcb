@@ -244,12 +244,12 @@ void World::startFrame(float interpolation) {
 // World Fonts
 Font* World::getFont() const {return largeFont;}
 Font* World::getFontAppleLarge() const { return fontAppleLarge; }
-Font* World::getFontAppleSmall() const { return fontAppleLarge; }
+Font* World::getFontAppleSmall() const { return fontAppleSmall; }
 Font* World::getFontInconsolataLarge() const { return fontInconsolataLarge; }
 Font* World::getFontInconsolataSmall() const { return fontInconsolataSmall; }
 Font* World::getFontCrystalLarge() const { return fontCrystalLarge; }
-Font* World::getFontCrystalSmall() const { return fontCrystalLarge; }
+Font* World::getFontCrystalSmall() const { return fontCrystalSmall; }
 Font* World::getFontSubotypeLarge() const { return fontSubotypeLarge; }
-Font* World::getFontSubotypeSmall() const { return fontSubotypeLarge; }
+Font* World::getFontSubotypeSmall() const { return fontSubotypeSmall; }
 Font* World::getFontBoldLarge() const { return fontBoldLarge; }
-Font* World::getFontBoldSmall() const { return fontBoldLarge; }
+Font* World::getFontBoldSmall() const { return fontBoldSmall; }

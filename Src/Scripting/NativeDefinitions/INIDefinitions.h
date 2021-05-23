@@ -11,6 +11,8 @@
 class ScriptManager;
 
 class INIDefinitions : public NativeDefinition {
+private:
+    INIFile* iniFileFactory(const PGE::FilePath& filename);
 public:
     INIDefinitions(ScriptManager* mgr, INIFile* ini);
 };

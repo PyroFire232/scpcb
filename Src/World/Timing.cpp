@@ -1,14 +1,8 @@
 #include "Timing.h"
 
-
-// The maximum amount of time the accumulator can store.
-static constexpr double MAX_ACCUMULATED_SECONDS = 3.0;
-using Clock = std::chrono::high_resolution_clock;
-
-
 Timing::Timing(int tickrate, int framerate) {
-    setTickRate(tickrate-1);
-    setFrameRate(framerate-1);
+    setTickRate(tickrate+1);
+    setFrameRate(framerate+1);
     sinceLastTick = 0.f;
     sinceLastFrame = 0.f;
     avgTickRate = 0.f;
@@ -42,9 +36,9 @@ float Timing::getAvgFrameRate() const { return avgFrameRate; }
 
 // Clock Ticking
 bool Timing::tickReady() {
-    Clock::time_point now = Clock::now();
+    std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
     if (now >= compareTick) {
-        Clock::duration sinceLast = (now - lastTick);
+        std::chrono::high_resolution_clock::duration sinceLast = (now - lastTick);
         sinceLastTick = float(std::chrono::duration_cast<std::chrono::nanoseconds>(sinceLast).count()) / 1000000000.f;
         compareTick = (lastTick + tickStepDuration + tickStepDuration) - sinceLast;
         lastTick = now;
@@ -61,9 +55,9 @@ void Timing::tickFinished() {
 
 // Frame Ticking
 bool Timing::frameReady() {
-    Clock::time_point now = Clock::now();
+    std::chrono::high_resolution_clock::time_point now = std::chrono::high_resolution_clock::now();
     if (now >= compareFrame) {
-        Clock::duration sinceLast = (now - lastFrame);
+        std::chrono::high_resolution_clock::duration sinceLast = (now - lastFrame);
         sinceLastFrame = float(std::chrono::duration_cast<std::chrono::nanoseconds>(sinceLast).count()) / 1000000000.f;
         compareFrame = (lastFrame + frameStepDuration+frameStepDuration)-sinceLast;
         lastFrame = now;
